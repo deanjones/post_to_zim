@@ -2,7 +2,7 @@
   "name": "Post to Zim",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "Post link to Zim notebooks stored in Dropbox",
+  "description": "Post link to Zim notebooks stored in Google Drive",
   "homepage_url": "http://github.com/deanjones/post-to-zim",
   "icons": {
     "16": "icons/icon16.png",
@@ -17,6 +17,7 @@
     "default_popup": "src/browser_action/browser_action.html"
   },
   "permissions": [
-     "storage"
+     "storage",
+     "activeTab"
   ]
 }
