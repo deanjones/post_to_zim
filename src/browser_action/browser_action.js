@@ -1,18 +1,20 @@
 //
 //
-function post_to_notebook(notebook) {
-    console.log('post_to_notebook(' + notebook + ')');
+function post_to_notebook(active_notebook) {
+    console.log('post_to_notebook(' + active_notebook + ')');
     chrome.tabs.query({'active': true}, function(tabs) {
-      url = tabs[0].url;
+      active_url = tabs[0].url;
       var message;
-      if (!notebook) {
+      if (!active_notebook) {
         message = 'No Notebook specified';
-      } else if (!url) {
+      } else if (!active_url) {
         message = 'No URL available';
       } else {
-        message = 'Posting ' + url + ' to notebook ' + notebook;
+        message = 'Posting ' + active_url + ' to notebook ' + active_notebook;
       }
       document.getElementById('content').textContent =  message;
+      // send a message to the background page
+      chrome.runtime.sendMessage({url: active_url, notebook: active_notebook});
     });
 }
 
@@ -24,4 +26,5 @@ function get_options() {
       post_to_notebook(result.default_notebook);
     });
 }
+
 document.addEventListener('DOMContentLoaded', get_options);

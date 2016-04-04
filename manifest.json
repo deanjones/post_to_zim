@@ -1,7 +1,8 @@
 {
+  "manifest_version": 2,
   "name": "Post to Zim",
   "version": "0.0.1",
-  "manifest_version": 2,
+  "default_locale": "en",
   "description": "Post link to Zim notebooks stored in Google Drive",
   "homepage_url": "http://github.com/deanjones/post-to-zim",
   "icons": {
@@ -9,13 +10,16 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "default_locale": "en",
-  "options_page": "src/options/index.html",
+  "background": {
+    "scripts": ["src/bg/background.js"],
+    "persistent": false
+  },
   "browser_action": {
     "default_icon": "icons/icon19.png",
     "default_title": "Post link to zim notebook",
     "default_popup": "src/browser_action/browser_action.html"
   },
+  "options_page": "src/options/index.html",
   "permissions": [
      "storage",
      "activeTab"
